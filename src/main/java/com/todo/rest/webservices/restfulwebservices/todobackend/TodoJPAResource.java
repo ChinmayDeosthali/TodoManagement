@@ -24,6 +24,11 @@ public class TodoJPAResource {
 	private TodoJPARepository todoJPARepository;
 	
 	
+	@GetMapping(path="/")
+	public String getStatus()
+	{
+		return "Application is up and running";
+	}
 	@GetMapping(path="/jpa/users/{username}/todos")
 	public List<Todo> getAllTodos(@PathVariable String username){
 		System.out.println("----getAllTodos called,Params -  Username: " + username);
