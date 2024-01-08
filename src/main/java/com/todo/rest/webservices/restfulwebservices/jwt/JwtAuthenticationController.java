@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
+//@CrossOrigin(origins="http://localhost:4200")
 @RestController
-@CrossOrigin(origins="http://localhost:4200")
 public class JwtAuthenticationController {
     
     private final JwtTokenService tokenService;
@@ -26,6 +27,8 @@ public class JwtAuthenticationController {
     public ResponseEntity<JwtTokenResponse> generateToken(
             @RequestBody JwtTokenRequest jwtTokenRequest) {
         
+    	System.out.println("---- In GenerateToken method, creating token");
+    	
         var authenticationToken = 
                 new UsernamePasswordAuthenticationToken(
                         jwtTokenRequest.username(), 

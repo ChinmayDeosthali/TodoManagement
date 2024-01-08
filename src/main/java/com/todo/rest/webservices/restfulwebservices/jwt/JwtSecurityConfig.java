@@ -83,6 +83,8 @@ public class JwtSecurityConfig {
                                 .roles("USER")
                                 .build();
 
+        System.out.println("---In userDetailsService");
+        System.out.println();
         return new InMemoryUserDetailsManager(user);
     }
 

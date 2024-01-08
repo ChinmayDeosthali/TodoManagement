@@ -32,12 +32,14 @@ public class TodoJPAResource {
 	@GetMapping(path="/jpa/users/{username}/todos")
 	public List<Todo> getAllTodos(@PathVariable String username){
 		System.out.println("----getAllTodos called,Params -  Username: " + username);
+		System.out.println();
 		return todoJPARepository.findByUsername(username);
 	}
 	
 	@GetMapping(path="/jpa/users/{username}/todos/{id}")
 	public Todo getTodo(@PathVariable String username, @PathVariable long id){
 		System.out.println("----getTodo called,Params -  Username: " + username + ", id: "+ id);
+		System.out.println();
 		return todoJPARepository.findById(id).get();
 	}
 	
@@ -46,7 +48,7 @@ public class TodoJPAResource {
 	public ResponseEntity<Todo> updateTodo(@PathVariable String username, @PathVariable long id, @RequestBody Todo todo) {
 		
 		System.out.println("----updateTodo called,Params -  Username: " + username + ", id: "+ id+ ", todo: "+ todo);
-
+		System.out.println();
 		Todo updatedTodo =todoJPARepository.save(todo);
 		return new ResponseEntity<Todo>(updatedTodo, HttpStatus.OK);
 	}
@@ -55,6 +57,7 @@ public class TodoJPAResource {
 	public ResponseEntity<Todo> createTodo(@PathVariable String username, @RequestBody Todo todo) {
 		
 		System.out.println("----createTodo called,Params -  Username: " + username +", todo: "+ todo);
+		System.out.println();
 		todo.setUsername(username);
 		Todo createdTodo =todoJPARepository.save(todo);
 		
@@ -71,6 +74,7 @@ public class TodoJPAResource {
 	public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable long id){
 		
 		System.out.println("----deleteTodo called,Params -  Username: " + username +", id: "+ id);
+		System.out.println();
 
 		
 		todoJPARepository.deleteById(id);
